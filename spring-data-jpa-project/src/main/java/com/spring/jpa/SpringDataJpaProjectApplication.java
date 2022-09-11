@@ -1,4 +1,4 @@
-package com.spring.jpa.springdatajpaproject;
+package com.spring.jpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,7 @@ public class SpringDataJpaProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDataJpaProjectApplication.class, args);
+
 	}
 
 }
