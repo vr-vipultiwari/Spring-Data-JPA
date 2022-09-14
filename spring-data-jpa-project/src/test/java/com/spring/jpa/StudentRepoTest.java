@@ -78,4 +78,26 @@ public class StudentRepoTest {
 			List<Student> studentList = studentRepository.findByGuardianName("raj");
 			System.out.println("Containing-->"+ studentList);
 	}
+	
+
+	@Test 
+	void getStudentByEmail(){
+		
+			Student student = studentRepository.getStudentByEmailAddress("yesboss@gmail.com");
+			System.out.println("Containing-->"+ student);
+	}
+	
+	
+	@Test
+	void getStudentByIdNative() {
+		
+		Student student= studentRepository.getStudentByIdNativeQuery(1L);
+		System.out.println(student);
+	}
+	
+	@Test
+	void updateTheFirstNameByEmailIdTest() {
+			studentRepository.updateTheFirstNameByEmailId("Vipul", "shivam@gmail.com");
+		
+	}
 }
