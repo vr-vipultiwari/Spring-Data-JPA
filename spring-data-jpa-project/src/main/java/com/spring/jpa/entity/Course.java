@@ -1,11 +1,19 @@
 package com.spring.jpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.sound.midi.Sequence;
+
+import org.hibernate.annotations.ManyToAny;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,4 +39,18 @@ public class Course {
 	private String courseTitle;
 	private int credit ;
 	
+	@OneToOne(
+			mappedBy = "course"
+	)
+	private CourseMaterial courseMaterial ;
+	
+	
+	@ManyToOne(
+			cascade = CascadeType.ALL
+			)
+	@JoinColumn(
+	    name="teacher_id",
+	    referencedColumnName = "teacherId"
+	)
+	private Teacher teacher ;
 }

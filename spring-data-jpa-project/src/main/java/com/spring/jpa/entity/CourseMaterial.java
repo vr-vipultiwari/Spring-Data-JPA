@@ -2,6 +2,7 @@ package com.spring.jpa.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,12 +14,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "course")
 public class CourseMaterial {
 
 	@Id
@@ -32,7 +35,10 @@ public class CourseMaterial {
 	private String courseMaterialUrl;
 	
 	@OneToOne(
-		 cascade = CascadeType.ALL	
+		 cascade = CascadeType.ALL,
+		 fetch = FetchType.LAZY,
+		 optional = false
+		 
 	  )
 	@JoinColumn(
 			name="course_id",

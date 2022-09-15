@@ -1,5 +1,7 @@
 package com.spring.jpa;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,13 +23,21 @@ class CourseMaterialRepoTest {
 	@Test
     void saveCourseMaterail() {
     	
-		Course course = Course.builder().courseTitle("DSA").credit(8).build();
+		Course course = Course.builder().courseTitle("Digital Marketing Course").credit(8).build();
 		
       CourseMaterial courseMaterial   = CourseMaterial.builder()
-		             .courseMaterialUrl("https://local:9090/course1")
-		             .course(course).build();
+		             .courseMaterialUrl("https://sun.micro.system/course1")
+		             .course(course)
+		             .build();
     	
     	courseMaterialRepository.save(courseMaterial);
     }
+	
+	@Test
+	void printAllCourseMaterial() {
+		
+		  List<CourseMaterial> allCourseMaterial = courseMaterialRepository.findAll();
+		  System.out.println(allCourseMaterial);
+	}
 	
 }
